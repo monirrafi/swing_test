@@ -16,10 +16,6 @@ public class ComboBoxExample extends JFrame{
         super.setLayout(null);    
         super.setSize(400,500);    
         super.setVisible(true);  
-
-        //cb.addActionListener(this::afficher);
-
-        
         cb.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,13 +28,6 @@ public class ComboBoxExample extends JFrame{
     
     //String country[]={"India","Aus","U.S.A","England","Newzealand"};  A
     public static ArrayList<String> liste() throws SQLException {
-         /*   
-        LaResultset laRs1 = new LaResultset("select * from emp");
-        ResultSet rs1 = laRs1.getRs();
-        int size=0;
-        while(rs1.next()){
-            size++;
-        }*/
         
         LaResultset laRs = new LaResultset("select * from emp");
         ResultSet rs = laRs.getRs();
@@ -46,7 +35,7 @@ public class ComboBoxExample extends JFrame{
         ArrayList<String> names = new ArrayList<>();
         //int i=0;
         while(rs.next()){
-            names.add(rs.getString("ename"));
+            names.add(rs.getString("empno"));
            // i++;
         }
         return names;
