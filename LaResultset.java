@@ -3,7 +3,7 @@ import java.sql.*;
 public class LaResultset {
     private ResultSet rs=null;
     public LaResultset(String strSql){ 
-    final String DB_URL = "jdbc:mysql://localhost:3306/officecenter";
+    final String DB_URL = "jdbc:mysql://localhost:4000/officecenter";
     final String USER = "root";
     final String PASS = "";
     final String QUERY = strSql ;
