@@ -12,10 +12,10 @@ public class TableExample {
 
     for(int i=0; i<listeDept.size();i++){
        // ArrayList<String> unListe = listeDept.get(i);
-       String str = (listeDept).get(i);
+        String str = "";
        //System.out.println(unListe);
-        for(int j=0;j<listeDept.size();j++){
-            str = (listeDept).get(i);
+        for(int j=0;j<3;j++){
+            str = (listeDept).get(j);
             data[i][j]= str;
         }
 
