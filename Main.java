@@ -1,41 +1,28 @@
-import java.awt.FlowLayout;
-import java.awt.HeadlessException;
-import java.awt.event.KeyEvent;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-
-public class Main extends JFrame {
-  public Main() throws HeadlessException {
-    setSize(400, 200);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setLayout(new FlowLayout(FlowLayout.LEFT));
-
-    JLabel usernameLabel = new JLabel("Username: ");
-    JLabel passwordLabel = new JLabel("Password: ");
-    JTextField usernameField = new JTextField(20);
-    JPasswordField passwordField = new JPasswordField(20);
-
-    usernameLabel.setDisplayedMnemonic(KeyEvent.VK_U);
-    usernameLabel.setLabelFor(usernameField);
-    passwordLabel.setDisplayedMnemonic(KeyEvent.VK_P);
-    passwordLabel.setLabelFor(passwordField);
-    JPanel paneUser = new JPanel();
-    paneUser.add(usernameLabel);
-    paneUser.add(usernameField);
-    JPanel panePword = new JPanel();
-    panePword.add(passwordLabel);
-    panePword.add(passwordField);
-
-    super.add(paneUser);
-    super.add(panePword);
-  }
-
-  public static void main(String[] args) {
-    new Main().setVisible(true);
-  }
-}
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
  
+import javax.swing.JFrame;
+ 
+ 
+public class Main
+{
+  public static void main(String[] args) throws SQLException
+  {
+    LaResultset laRs = new LaResultset("SELECT * FROM EMP");
+    ResultSetTableModel rtm = new ResultSetTableModel( laRs.getRs() );
+    
+    TablePanel tablePanel = new TablePanel( rtm );
+    
+    JFrame mainFrame = new JFrame( "Affiche table " );
+    mainFrame.add( tablePanel, BorderLayout.CENTER );
+    mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+    mainFrame.setSize( 640, 480 );
+    mainFrame.setVisible( true );
+  }
+ 
+  
+}

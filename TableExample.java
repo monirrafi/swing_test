@@ -15,7 +15,7 @@ public class TableExample {
         String str = "";
        //System.out.println(unListe);
         for(int j=0;j<3;j++){
-            str = (listeDept).get(j);
+            str = (listeDept).get(i);
             data[i][j]= str;
         }
 
