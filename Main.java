@@ -12,8 +12,14 @@ public class Main
 {
   public static void main(String[] args) throws SQLException
   {
-    LaResultset laRs = new LaResultset("SELECT * FROM EMP");
-    ResultSetTableModel rtm = new ResultSetTableModel( laRs.getRs() );
+    LaResultset laRs = new LaResultset("SELECT * FROM DEPT");
+    ResultSet rs = laRs.getRs();
+    /*
+    while(rs.next()){
+      rs.updateString("loc", "Ksar");
+      rs.updateRow();
+    }*/
+    ResultSetTableModel rtm = new ResultSetTableModel( rs);
     
     TablePanel tablePanel = new TablePanel( rtm );
     

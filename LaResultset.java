@@ -10,7 +10,7 @@ public class LaResultset {
     try{
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
         
-         Statement stmt = conn.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY );
+         Statement stmt = conn.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE );
          rs = stmt.executeQuery(QUERY);
 
          // Extract data from result set
