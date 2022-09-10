@@ -1,34 +1,91 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class FirstExample extends JFrame{
   // private JPanel pane =new JPanel();
    String[] entete = {"No","Nom","Location"};
-   static JPanel panePrincipal = new JPanel(new GridLayout(3,1));
-
+   static JPanel panePrincipal = new JPanel(new GridLayout(4,1));
+   static JPanel paneNo;
 
     public FirstExample() {
       JPanel pane = new JPanel();
-      for(String str:entete){
+      
+      for(int i=0;i<entete.length;i++){
 
-      JLabel labelNo = new JLabel(str);
+      JLabel labelNo = new JLabel(entete[i]);
+      labelNo.setName("label"+entete[i]);
       JTextField no = new JTextField(20);
+      no.setName("field"+entete[i]);
+      //System.out.println(no.getName());
+
       labelNo.setLabelFor(no);
-      JPanel paneNo = new JPanel();
+      paneNo = new JPanel();
       paneNo.add(labelNo);
       paneNo.add(no);
       panePrincipal.add(paneNo);
-      pane.add(panePrincipal);
+      
       }
+      JButton btn = new JButton("Mise A Jour");
+      btn.addActionListener(new ActionListener(){
+
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               listeDesFields();
+               Afficher aff = new Afficher("SELECT * FROM DEPT", "3306");
+               
+            } catch (SQLException e1) {
+               // TODO Auto-generated catch block
+               e1.printStackTrace();
+            }            
+         }
+         
+      });
+      panePrincipal.add(btn);
+      pane.add(panePrincipal);
       super.add(pane);
       super.setTitle("title");
       super.setSize(new Dimension(800,600));
       super.setVisible(true);
    }
+   public void listeDesFields() throws SQLException {
+      ArrayList<JTextField> liste = new ArrayList<>();
+      for(Component cmp:panePrincipal.getComponents()){
+         
+         for(Component cm:((Container) cmp).getComponents()){
+            String nom =cm.getName().substring(0,5);
+           if((nom).equals("field")){
+             
+               liste.add((JTextField)cm);
+            }
+         }
+      }
+         LaResultset laRs = new LaResultset("SELECT * FROM DEPT WHERE DEPTNO = " + liste.get(0).getText() ,"3306");
+         ResultSet rs = laRs.getRs();
+   
+         while(rs.next()){
+            rs.updateString("dname", liste.get(1).getText());
+            rs.updateString("loc", liste.get(2).getText());
+            rs.updateRow();
+
+          }
+        for(JTextField jtxt:liste){
+         jtxt.setText("");
+        }
+   }
+   
+
 
 
    public static void main(String[] args) throws SQLException {
-      new FirstExample();
+      FirstExample ft = new FirstExample();
+      
+
+      
 }
 }

@@ -2,8 +2,8 @@ import java.sql.*;
 
 public class LaResultset {
     private ResultSet rs=null;
-    public LaResultset(String strSql){ 
-    final String DB_URL = "jdbc:mysql://localhost:3306/officecenter";
+    public LaResultset(String strSql,String port){ 
+    final String DB_URL = "jdbc:mysql://localhost:"+port+"/officecenter";
     final String USER = "root";
     final String PASS = "";
     final String QUERY = strSql ;

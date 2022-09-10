@@ -34,7 +34,7 @@ public class TableExample {
 }  
 public static ArrayList<String> liste() throws SQLException {
         
-    LaResultset laRs = new LaResultset("select * from dept");
+    LaResultset laRs = new LaResultset("select * from dept","3306");
     ResultSet rs = laRs.getRs();
    // ArrayList<ArrayList<String>> names = new ArrayList<>();
     ArrayList<String> item = new ArrayList<>();
