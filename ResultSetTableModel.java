@@ -19,7 +19,7 @@ public class ResultSetTableModel extends AbstractTableModel
     }
     catch (SQLException e)
     {
-      // TODO Auto-generated catch block
+      
       e.printStackTrace();
     }
   }
@@ -32,7 +32,7 @@ public class ResultSetTableModel extends AbstractTableModel
     }
     catch (SQLException e)
     {
-      // TODO Auto-generated catch block
+
       e.printStackTrace();
       return 0;
     }
@@ -48,7 +48,7 @@ public class ResultSetTableModel extends AbstractTableModel
     }
         catch (SQLException e)
     {
-      // TODO Auto-generated catch block
+      
       e.printStackTrace();
       return 0;
     }
@@ -64,7 +64,7 @@ public class ResultSetTableModel extends AbstractTableModel
     }
     catch (SQLException e)
     {
-      // TODO Auto-generated catch block
+      
       e.printStackTrace();
       return null;
     }
@@ -78,7 +78,7 @@ public class ResultSetTableModel extends AbstractTableModel
     }
     catch (SQLException e)
     {
-      // TODO Auto-generated catch block
+      
       e.printStackTrace();
       return "";
     }
