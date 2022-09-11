@@ -1,6 +1,4 @@
-import java.awt.BorderLayout;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.awt.*;
 import java.sql.*;
  
 import javax.swing.JFrame;

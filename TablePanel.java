@@ -8,6 +8,7 @@ import javax.swing.table.TableModel;
  
 public class TablePanel extends JPanel
 {
+  private JTable table;
   public TablePanel( TableModel model )
   {
     table = new JTable( model );
@@ -17,5 +18,4 @@ public class TablePanel extends JPanel
    
    
   }
-  private JTable table;
 }

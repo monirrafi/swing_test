@@ -83,7 +83,22 @@ public class FirstExample extends JFrame{
 
 
    public static void main(String[] args) throws SQLException {
-      FirstExample ft = new FirstExample();
+      ArrayList<String> newValeurs = new ArrayList<>(){{add("");add("Marwa");add("Agadir");}};
+
+      LaResultset laRs = new LaResultset("SELECT * FROM DEPT WHERE DEPTNO=10","3306");
+      ResultSet rs = laRs.getRs();
+      ResultSetTableModel rtm = new ResultSetTableModel( rs);
+      while(rs.next()){
+
+      for(int i=1;i<newValeurs.size();i++){
+         String colName = rtm.getColumnName(i),nouveau = newValeurs.get(i);
+         rs.updateString(colName,nouveau);
+      }
+         rs.updateRow();
+
+       }
+      //FirstExample ft = new FirstExample();
+      Afficher aff = new Afficher("SELECT * FROM DEPT WHERE DEPTNO=10","3306");
       
 
       
