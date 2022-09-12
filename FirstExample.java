@@ -212,7 +212,7 @@ public class FirstExample extends JFrame implements ajouterEcouteur{
 
    public static void main(String[] args) throws SQLException {
 
-      FirstExample ft = new FirstExample("SELECT * FROM DEPT", "3306");
+      FirstExample ft = new FirstExample("SELECT * FROM EMP", "4000");
       int choix;
 		
 		do {
